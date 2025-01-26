@@ -1,0 +1,98 @@
+$primary: #032541;
+$white: #fff;
+
+section {
+  max-width: 1300px;
+  width: 100%;
+  height: 450px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 0 auto;
+  .backgroundImages {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    .one {
+      width: 100%;
+      height: 100%;
+      background-image: url("/content/one.webp");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .two {
+      width: 100%;
+      height: 100%;
+      background-image: url("/content/two.webp");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .three {
+      width: 100%;
+      height: 100%;
+      background-image: url("/content/three.webp");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .four {
+      width: 100%;
+      height: 100%;
+      background-image: url("/content/four.webp");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .five {
+      width: 100%;
+      height: 100%;
+      background-image: url("/content/five.webp");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+    .six {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba($color: #000000, $alpha: 0.6);
+    }
+  }
+  .text {
+    z-index: 10;
+    padding: 0 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    h1 {
+      width: 280px;
+      font-size: 54px;
+      background: linear-gradient(90deg, #8fc6af, #3595ef);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p {
+      color: $white;
+      font-size: 20px;
+    }
+    button {
+      width: 138px;
+      height: 36px;
+      background-color: transparent;
+      border: 2px solid $white;
+      border-radius: 20px;
+      color: $white;
+      font-weight: bold;
+      font-size: 15px;
+      cursor: pointer;
+    }
+  }
+}

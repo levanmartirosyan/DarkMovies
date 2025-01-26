@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+// @import "../node_modules/ngx-toastr/toastr.css";
+
+$primary: #032541;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+@font-face {
+  font-family: "sans-pro";
+  src: url("/fonts/source-sans-pro-v14.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  width: 100%;
+  font-family: sans-serif !important;
+  position: relative;
+}
+
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $primary;
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 12px;
+}
