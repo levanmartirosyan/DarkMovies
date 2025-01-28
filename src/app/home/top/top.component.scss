@@ -57,13 +57,20 @@ section {
     .six {
       width: 100%;
       height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-color: rgba($color: #000000, $alpha: 0.6);
+      background-repeat: no-repeat;
+      display: none;
     }
+  }
+  .overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba($color: #000000, $alpha: 0.6);
+    z-index: 1;
   }
   .text {
     z-index: 10;
@@ -93,6 +100,58 @@ section {
       font-weight: bold;
       font-size: 15px;
       cursor: pointer;
+    }
+  }
+}
+@media screen and (max-width: 1024px) {
+  section {
+    .text {
+      padding: 0 20px;
+    }
+  }
+}
+
+@media screen and (max-width: 600px) {
+  section {
+    .backgroundImages {
+      display: grid;
+      grid-template-columns: auto auto;
+      .one {
+        background-position: top;
+        background-image: url("/content/oneM.webp");
+      }
+      .two {
+        background-position: top;
+        background-image: url("/content/twoM.webp");
+      }
+      .three {
+        background-position: top;
+        background-image: url("/content/threeM.webp");
+      }
+      .four {
+        background-position: top;
+        background-image: url("/content/fourM.webp");
+      }
+      .five {
+        background-position: top;
+        background-image: url("/content/fiveM.webp");
+      }
+      .six {
+        display: block;
+        background-position: top;
+        background-image: url("/content/sixM.webp");
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 365px) {
+  section {
+    .text {
+      h1 {
+        width: 240px;
+        font-size: 48px;
+      }
     }
   }
 }

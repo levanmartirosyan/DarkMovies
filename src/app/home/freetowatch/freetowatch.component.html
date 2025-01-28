@@ -1,1 +1,112 @@
-<p>freetowatch works!</p>
+<section>
+  <div class="top">
+    <h3>Top Rated</h3>
+    <div class="switcher">
+      <div
+        class="switch-bg"
+        [ngClass]="{ 'move-right': selected === 'Tv Shows' }"
+      ></div>
+
+      <div
+        class="switch-option"
+        [class.active]="selected === 'Movies'"
+        (click)="toggleSelection('Movies')"
+      >
+        Movies
+      </div>
+      <div
+        class="switch-option"
+        [class.active]="selected === 'Tv Shows'"
+        (click)="toggleSelection('Tv Shows')"
+      >
+        Tv Shows
+      </div>
+    </div>
+  </div>
+  <div class="movies">
+    @for (item of topRated; track $index) {
+    <div class="movieCard">
+      <div class="image">
+        <img
+          [src]="
+            'https://media.themoviedb.org/t/p/w220_and_h330_face' +
+            item.poster_path
+          "
+          alt="Movie Poster"
+        />
+        <div class="rating">
+          <div
+            class="progressBar"
+            [style.border]="
+              item.vote_average < 4
+                ? '2px solid #571f1f'
+                : item.vote_average < 7
+                ? '2px solid #423D0F'
+                : '2px solid #204529'
+            "
+          >
+            <div class="percent">
+              <p>{{ item.vote_average * 10 | number : "1.0-0" }}</p>
+              <span>%</span>
+            </div>
+          </div>
+          <div
+            class="progress"
+            [ngStyle]="{
+              'stroke-dasharray': 'calc(3.1416 * 2 * 15)',
+              'stroke-dashoffset':
+                'calc(3.1416 * 2 * 15 * (1 - (item.vote_average * 10 / 100)))',
+              'border-color':
+                item.vote_average < 4
+                  ? '#e70000'
+                  : item.vote_average < 7
+                  ? '#C8CA2F'
+                  : '#21CF79'
+            }"
+          >
+            <svg viewBox="0 0 36 36" class="circular-chart">
+              <path
+                class="circle-bg"
+                fill="none"
+                stroke="#e6e6e6"
+                stroke-width="2"
+                d="M18 2.0845
+                      a 15.9155 15.9155 0 1 0 0 31.831
+                      a 15.9155 15.9155 0 1 0 0 -31.831"
+              />
+              <path
+                class="circle"
+                fill="none"
+                [ngStyle]="{
+                  stroke:
+                    item.vote_average < 4
+                      ? '#e70000'
+                      : item.vote_average < 7
+                      ? '#C8CA2F'
+                      : '#21CF79'
+                }"
+                stroke-width="2"
+                [style.stroke-dasharray]="'calc(3.1416 * 2 * 15)'"
+                [style.stroke-dashoffset]="
+                  3.1416 * 2 * 15 * (1 - (item.vote_average * 10) / 100)
+                "
+                d="M18 2.0845
+                      a 15.9155 15.9155 0 1 0 0 31.831
+                      a 15.9155 15.9155 0 1 0 0 -31.831"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="text">
+        <h5>{{ item.title ? item.title : item.original_name }}</h5>
+        <span>{{
+          item.release_date
+            ? (item.release_date | date : "MMM d, yyyy")
+            : (item.first_air_date | date : "MMM d, yyyy")
+        }}</span>
+      </div>
+    </div>
+    }
+  </div>
+</section>

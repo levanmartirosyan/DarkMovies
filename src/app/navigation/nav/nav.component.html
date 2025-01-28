@@ -18,7 +18,85 @@
       </div>
       <p>Login</p>
       <p>Join Us</p>
-      <i class="fa-solid fa-magnifying-glass"></i>
+      <i class="fa-solid fa-magnifying-glass" (click)="toggleSearch()"></i>
+    </div>
+    <div class="listM">
+      <div
+        class="burgerBar"
+        (click)="toggleBurger()"
+        [class.active]="burger == true"
+      >
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+      <div class="logo">
+        <img src="logo.png" alt="" />
+      </div>
+    </div>
+
+    <div class="authM">
+      <i class="fa-solid fa-user"></i>
+      <i class="fa-solid fa-magnifying-glass" (click)="toggleSearch()"></i>
     </div>
   </div>
 </nav>
+
+<div class="mobileMenu" [class.active]="burger">
+  <div class="item">
+    <h2 (click)="toggleMenuItem('movies')">Movies</h2>
+    <p [class.active]="menuItem === 'movies'">Popular</p>
+    <p [class.active]="menuItem === 'movies'">Top Rated</p>
+    <p [class.active]="menuItem === 'movies'">Upcoming</p>
+    <p [class.active]="menuItem === 'movies'">Now Playing</p>
+  </div>
+  <div class="item">
+    <h2 (click)="toggleMenuItem('tv')">TV Shows</h2>
+    <p [class.active]="menuItem === 'tv'">Popular</p>
+    <p [class.active]="menuItem === 'tv'">Top Rated</p>
+    <p [class.active]="menuItem === 'tv'">On TV</p>
+    <p [class.active]="menuItem === 'tv'">Airing Today</p>
+  </div>
+  <div class="item">
+    <h2 (click)="toggleMenuItem('People')">People</h2>
+    <p [class.active]="menuItem === 'People'">Popular People</p>
+  </div>
+  <h5>Contribution Bible</h5>
+  <h5>Discussions</h5>
+  <h5>Leaderboard</h5>
+  <h5>API</h5>
+  <h5>Support</h5>
+  <h5>About</h5>
+  <h5>Login</h5>
+</div>
+
+<div class="search" [class.active]="search">
+  <div class="searchInput">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <input
+      type="search"
+      placeholder="Search for a movie, tv show, person..."
+      #searchInput
+      [(ngModel)]="searchQuery"
+      (keyup)="multiSearch()"
+    />
+  </div>
+  @if (dataIsTrue) {
+  <div class="searchResults"></div>
+  } @else if (!dataIsTrue) {
+  <div class="searchResults">
+    <div class="trending">
+      <div class="trend">
+        <i class="fa-solid fa-arrow-trend-up"></i>
+        <h3>Trending</h3>
+      </div>
+      @for (item of trendings; track $index) {
+      <div class="trendItem">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <p>{{ item.original_title }}</p>
+      </div>
+      }
+    </div>
+  </div>
+  }
+</div>

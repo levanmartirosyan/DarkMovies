@@ -1,0 +1,126 @@
+$primary: #032541;
+$white: #fff;
+
+section {
+  max-width: 1300px;
+  width: 100%;
+  height: 450px;
+  margin: 0 auto;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  .top {
+    width: 100%;
+  }
+  .movies {
+    width: 100%;
+    min-height: 373px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    overflow-x: auto;
+    position: relative;
+
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #7f8a94;
+      border-radius: 10px;
+    }
+    .movieCard {
+      width: 150px;
+      animation: smoothAppear 1.5s ease;
+      cursor: pointer;
+      .image {
+        width: 100%;
+        position: relative;
+        img {
+          width: 150px;
+          border-radius: 8px;
+        }
+        .rating {
+          width: 38px;
+          height: 38px;
+          border-radius: 50%;
+          background-color: $primary;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: absolute;
+          left: 12px;
+          bottom: -19px;
+          .progressBar {
+            width: 90%;
+            height: 90%;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .percent {
+              display: flex;
+              align-items: flex-start;
+              position: relative;
+              p {
+                font-size: 13px;
+                color: $white;
+                font-weight: bold;
+              }
+              span {
+                position: absolute;
+                font-size: 6px;
+                color: $white;
+                top: 1px;
+                right: -5px;
+              }
+            }
+          }
+          .progress {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scaleX(-1);
+            .circular-chart {
+              width: 100%;
+              height: 100%;
+              transform: rotate(1deg);
+            }
+            .circle-bg {
+              stroke: transparent;
+              stroke-width: 2;
+            }
+            .circle {
+              transition: stroke-dasharray 0.5s ease;
+              stroke-linecap: round;
+              stroke-width: 2;
+            }
+          }
+        }
+      }
+      .text {
+        height: 30px;
+        margin-top: 15px;
+        padding: 12px;
+        span {
+          font-weight: lighter;
+          font-size: 14px;
+          margin-top: 8px;
+          color: #7f8a94;
+        }
+      }
+    }
+  }
+}
+
+@keyframes smoothAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,1 +1,59 @@
-<p>trailers works!</p>
+<section>
+  <div class="top">
+    <h3>Trailers</h3>
+    <div class="switcher">
+      <div
+        class="switch-bg"
+        [ngClass]="{ 'move-right': selected === 'week' }"
+      ></div>
+
+      <div
+        class="switch-option"
+        [class.active]="selected === 'day'"
+        (click)="toggleSelection('day')"
+      >
+        Today
+      </div>
+      <div
+        class="switch-option"
+        [class.active]="selected === 'week'"
+        (click)="toggleSelection('week')"
+      >
+        This Week
+      </div>
+    </div>
+  </div>
+  <div class="movies">
+    @for (item of trandings; track $index) {
+    <div class="movieCard" (click)="getTrailerVideo(item.id)">
+      <div class="image">
+        <img
+          [src]="
+            'https://media.themoviedb.org/t/p/w220_and_h330_face' +
+            item.poster_path
+          "
+          alt="Movie Poster"
+        />
+        <div class="playBtn">
+          <i class="fa-solid fa-play"></i>
+        </div>
+        <p class="playWatch">Watch</p>
+      </div>
+      <div class="text">
+        <h5>{{ item.title }}</h5>
+        <span>Trailer</span>
+      </div>
+    </div>
+    }
+  </div>
+</section>
+@if (modal) {
+<div class="modal">
+  <div>
+    <h2>Trailer</h2>
+    <i class="fa-solid fa-x" (click)="toggleModal()"></i>
+  </div>
+  <iframe [src]="url" frameborder="0" width="100%" height="90%"></iframe>
+</div>
+<div class="overlay" (click)="toggleModal()"></div>
+}

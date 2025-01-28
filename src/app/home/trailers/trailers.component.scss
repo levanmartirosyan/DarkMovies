@@ -1,0 +1,232 @@
+$primary: #032541;
+$white: #fff;
+
+section {
+  max-width: 1300px;
+  width: 100%;
+  height: 450px;
+  margin: 0 auto;
+  background-image: url("/content/trendingLines.svg");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  .top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    .switcher {
+      display: flex;
+      align-items: center;
+      position: relative;
+      border: 1px solid $primary;
+      border-radius: 25px;
+      overflow: hidden;
+      width: 180px;
+      height: 30px;
+      background: #fff;
+      cursor: pointer;
+      position: relative;
+      .switch-bg {
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        background: $primary;
+        border-radius: 25px;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .move-right {
+        transform: translateX(100%);
+      }
+
+      .switch-option {
+        flex: 1;
+        text-align: center;
+        padding: 8px 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: $primary;
+        transition: color 0.5s ease-in-out, background 0.5s ease-in-out;
+        position: relative;
+        z-index: 2;
+
+        &.active {
+          background: linear-gradient(90deg, #a2efc5, #6bdba4);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+    }
+  }
+  .movies {
+    width: 100%;
+    min-height: 373px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    overflow-x: auto;
+    position: relative;
+    &::-webkit-scrollbar {
+      height: 8px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #7f8a94;
+      border-radius: 10px;
+    }
+    .movieCard {
+      width: 150px;
+      animation: smoothAppear 1.5s ease;
+      position: relative;
+      cursor: pointer;
+      transition: 0.3s ease;
+      .image {
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        border-radius: 8px;
+        img {
+          width: 150px;
+          border-radius: 8px;
+          transition: 0.3s ease;
+        }
+        .playBtn {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 50px;
+          height: 50px;
+          background-color: rgba($color: $white, $alpha: 0.7);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          transition: 0.3s ease;
+          i {
+            font-size: 24px;
+            color: $white;
+          }
+        }
+        .playWatch {
+          display: none;
+          position: absolute;
+          top: 150px;
+          left: 50%;
+          transform: translateX(-50%);
+          color: $white;
+          font-weight: bold;
+          transition: 0.3s ease;
+        }
+      }
+      .text {
+        height: 30px;
+        padding: 12px;
+        span {
+          font-weight: lighter;
+          font-size: 14px;
+          margin-top: 8px;
+          color: #7f8a94;
+        }
+      }
+      &:hover {
+        .image {
+          img {
+            filter: blur(10px);
+          }
+          .playBtn {
+            transform: translate(-50%, -50%) scale(1.2);
+          }
+          .playWatch {
+            display: block;
+            transform: translateX(-50%) scale(1.2);
+          }
+        }
+      }
+    }
+  }
+}
+
+.modal {
+  width: 90%;
+  height: 85%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1010;
+  background-color: $primary;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 10px;
+
+  div {
+    width: 100%;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+    h2 {
+      color: $white;
+    }
+    i {
+      color: $white;
+      cursor: pointer;
+      font-size: 22px;
+      transition: 0.3s ease;
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+  iframe {
+    border-radius: 0 0 10px 10px;
+  }
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  z-index: 1009;
+}
+
+@keyframes smoothAppear {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  .modal {
+    height: 60%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .modal {
+    height: 70%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .modal {
+    height: 60%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .modal {
+    height: 40%;
+  }
+}
