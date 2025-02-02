@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { CommonModule, NgClass } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-trending',
@@ -10,7 +11,7 @@ import { CommonModule, NgClass } from '@angular/common';
   styleUrl: './trending.component.scss',
 })
 export class TrendingComponent implements OnInit {
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, public router: Router) {}
 
   ngOnInit(): void {
     this.getTrendingMovies('day');
@@ -32,6 +33,15 @@ export class TrendingComponent implements OnInit {
       },
       error: (error: any) => {
         console.log(error);
+      },
+    });
+  }
+
+  goToDetails(id: any, media: string, title: string) {
+    this.router.navigate([`details/${media}/${title}/${id}`], {
+      queryParams: {
+        itemId: id,
+        mediaType: media,
       },
     });
   }

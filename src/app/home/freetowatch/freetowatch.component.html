@@ -25,7 +25,10 @@
   </div>
   <div class="movies">
     @for (item of topRated; track $index) {
-    <div class="movieCard">
+    <div
+      class="movieCard"
+      (click)="goToDetails(item.id, item.media_type, item.title)"
+    >
       <div class="image">
         <img
           [src]="

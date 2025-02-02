@@ -50,6 +50,7 @@ export class TrailersComponent implements OnInit {
     if (id) {
       this.modal = !this.modal;
     }
+    this.url = '';
     this.trandingIds = [];
     this.apiService.trailers(id).subscribe({
       next: (data: any) => {

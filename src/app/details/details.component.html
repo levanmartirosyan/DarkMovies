@@ -1,0 +1,12 @@
+<div>
+  <img
+    [src]="
+      'https://media.themoviedb.org/t/p/w220_and_h330_face' +
+      details.poster_path
+    "
+    alt="Movie Poster"
+  />
+  <p>{{ details.origin_country[0] }}</p>
+  <p>{{ details.title }}</p>
+  <p>{{ details.overview }}</p>
+</div>

@@ -89,4 +89,16 @@ export class ApiService {
       },
     });
   }
+
+  movieDetails(id: string) {
+    return this.http.get(
+      `https://api.themoviedb.org/3/movie/${id}?language=en-US`,
+      {
+        headers: {
+          accept: 'application/json',
+          Authorization: `Bearer ${this.token}`,
+        },
+      }
+    );
+  }
 }

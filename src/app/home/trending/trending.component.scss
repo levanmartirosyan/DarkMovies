@@ -64,7 +64,7 @@ section {
   }
   .movies {
     width: 100%;
-    min-height: 373px;
+    min-height: 380px;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -74,7 +74,7 @@ section {
       height: 8px;
     }
     &::-webkit-scrollbar-thumb {
-      background-color: #7f8a94;
+      background-color: #b1c2d1;
       border-radius: 10px;
     }
     .movieCard {

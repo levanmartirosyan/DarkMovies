@@ -1,6 +1,7 @@
 import { CommonModule, NgClass } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-freetowatch',
@@ -10,7 +11,7 @@ import { ApiService } from '../../services/api.service';
   styleUrl: './freetowatch.component.scss',
 })
 export class FreetowatchComponent implements OnInit {
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, public router: Router) {}
 
   ngOnInit(): void {
     this.getTopRatedMovies();
@@ -48,6 +49,15 @@ export class FreetowatchComponent implements OnInit {
       },
       error: (error: any) => {
         console.log(error);
+      },
+    });
+  }
+
+  goToDetails(id: any, media: string, title: string) {
+    this.router.navigate([`details/${media}/${title}/${id}`], {
+      queryParams: {
+        itemId: id,
+        mediaType: media,
       },
     });
   }
