@@ -38,11 +38,155 @@ nav {
         display: flex;
         align-items: center;
         gap: 26px;
-        p {
+        span {
+          height: 24px;
           color: $white;
           font-size: 16px;
           font-weight: bold;
           cursor: pointer;
+          position: relative;
+          display: flex;
+          align-items: center;
+        }
+        span:nth-child(1) {
+          &:hover {
+            .hoverMenuMovie {
+              display: flex;
+            }
+          }
+        }
+        span:nth-child(2) {
+          &:hover {
+            .hoverMenuTv {
+              display: flex;
+            }
+          }
+        }
+        span:nth-child(3) {
+          &:hover {
+            .hoverMenuPeople {
+              display: flex;
+            }
+          }
+        }
+        span:nth-child(4) {
+          &:hover {
+            .hoverMenuMore {
+              display: flex;
+            }
+          }
+        }
+        .hoverMenuMovie {
+          width: 140px;
+          height: 130px;
+          background-color: $white;
+          box-shadow: 0 0 10px 3px rgba($color: #000000, $alpha: 0.35);
+          display: none;
+          position: absolute;
+          top: 24px;
+          left: 0;
+          flex-direction: column;
+          border-radius: 7px;
+          padding: 7px 0;
+          justify-content: space-between;
+          span {
+            width: 100%;
+            height: 100%;
+            color: $primary;
+            font-size: 12px;
+            transition: 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 15px;
+            &:hover {
+              background-color: #dee2e6;
+            }
+          }
+        }
+        .hoverMenuTv {
+          width: 140px;
+          height: 130px;
+          background-color: $white;
+          box-shadow: 0 0 10px 3px rgba($color: #000000, $alpha: 0.35);
+          display: none;
+          position: absolute;
+          top: 24px;
+          left: 0;
+          flex-direction: column;
+          border-radius: 7px;
+          padding: 7px 0;
+          justify-content: space-between;
+          span {
+            width: 100%;
+            height: 100%;
+            color: $primary;
+            font-size: 12px;
+            transition: 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 15px;
+            &:hover {
+              background-color: #dee2e6;
+            }
+          }
+        }
+        .hoverMenuPeople {
+          width: 140px;
+          height: 41px;
+          background-color: $white;
+          box-shadow: 0 0 10px 3px rgba($color: #000000, $alpha: 0.35);
+          display: none;
+          position: absolute;
+          top: 24px;
+          left: 0;
+          flex-direction: column;
+          border-radius: 7px;
+          padding: 7px 0;
+          justify-content: space-between;
+          span {
+            width: 100%;
+            height: 100%;
+            color: $primary;
+            font-size: 12px;
+            transition: 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 15px;
+            &:hover {
+              background-color: #dee2e6;
+            }
+          }
+        }
+        .hoverMenuMore {
+          width: 140px;
+          height: 130px;
+          background-color: $white;
+          box-shadow: 0 0 10px 3px rgba($color: #000000, $alpha: 0.35);
+          display: none;
+          position: absolute;
+          top: 24px;
+          left: 0;
+          flex-direction: column;
+          border-radius: 7px;
+          padding: 7px 0;
+          justify-content: space-between;
+          span {
+            width: 100%;
+            height: 100%;
+            color: $primary;
+            font-size: 12px;
+            transition: 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding-left: 15px;
+            &:hover {
+              background-color: #dee2e6;
+            }
+          }
         }
       }
     }

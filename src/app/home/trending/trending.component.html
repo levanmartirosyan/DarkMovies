@@ -25,10 +25,7 @@
   </div>
   <div class="movies">
     @for (item of trendings; track $index) {
-    <div
-      class="movieCard"
-      (click)="goToDetails(item.id, item.media_type, item.title)"
-    >
+    <div class="movieCard" (click)="goToDetails(item.id, item.media_type)">
       <div class="image">
         <img
           [src]="

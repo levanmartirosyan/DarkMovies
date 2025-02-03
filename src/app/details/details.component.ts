@@ -16,13 +16,15 @@ export class DetailsComponent implements OnInit {
   }
 
   public itemId: any;
-  public details: any;
+  public details: any = {};
   getDetailsData() {
     this.actR.queryParams.subscribe((data: any) => {
       console.log(data);
       const mediaType = data.mediaType;
+      console.log(mediaType);
+
       this.itemId = data.itemId;
-      if (mediaType == 'movie') {
+      if (mediaType == 'movie' || mediaType == 'Movies') {
         this.apiService.movieDetails(this.itemId).subscribe({
           next: (data: any) => {
             console.log(data);
@@ -33,7 +35,15 @@ export class DetailsComponent implements OnInit {
           },
         });
       } else {
-        alert('Error, Unknown MediaType! :))))))');
+        this.apiService.tvDetails(this.itemId).subscribe({
+          next: (data: any) => {
+            console.log(data);
+            this.details = data;
+          },
+          error: (error: any) => {
+            console.log(error);
+          },
+        });
       }
     });
   }

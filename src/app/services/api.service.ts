@@ -45,9 +45,21 @@ export class ApiService {
     );
   }
 
-  popularMovies(day: string) {
+  popularMovies() {
     return this.http.get(
       'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1',
+      {
+        headers: {
+          accept: 'application/json',
+          Authorization: `Bearer ${this.token}`,
+        },
+      }
+    );
+  }
+
+  popularTv() {
+    return this.http.get(
+      'https://api.themoviedb.org/3/tv/popular?language=en-US&page=1',
       {
         headers: {
           accept: 'application/json',
@@ -93,6 +105,18 @@ export class ApiService {
   movieDetails(id: string) {
     return this.http.get(
       `https://api.themoviedb.org/3/movie/${id}?language=en-US`,
+      {
+        headers: {
+          accept: 'application/json',
+          Authorization: `Bearer ${this.token}`,
+        },
+      }
+    );
+  }
+
+  tvDetails(id: string) {
+    return this.http.get(
+      `https://api.themoviedb.org/3/tv/${id}?language=en-US`,
       {
         headers: {
           accept: 'application/json',

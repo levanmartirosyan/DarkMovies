@@ -38,11 +38,9 @@ section {
         border-radius: 25px;
         transition: transform 0.3s ease-in-out;
       }
-
       .move-right {
         transform: translateX(100%);
       }
-
       .switch-option {
         flex: 1;
         text-align: center;
@@ -53,7 +51,6 @@ section {
         transition: color 0.5s ease-in-out, background 0.5s ease-in-out;
         position: relative;
         z-index: 2;
-
         &.active {
           background: linear-gradient(90deg, #a2efc5, #6bdba4);
           -webkit-background-clip: text;
@@ -81,6 +78,7 @@ section {
       width: 150px;
       animation: smoothAppear 1.5s ease;
       cursor: pointer;
+      transition: 0.3s ease;
       .image {
         width: 100%;
         position: relative;
@@ -153,11 +151,17 @@ section {
         height: 30px;
         margin-top: 15px;
         padding: 12px;
+        transition: 0.3s ease;
         span {
           font-weight: lighter;
           font-size: 14px;
           margin-top: 8px;
           color: #7f8a94;
+        }
+      }
+      &:hover {
+        .text {
+          transform: scale(1.08);
         }
       }
     }

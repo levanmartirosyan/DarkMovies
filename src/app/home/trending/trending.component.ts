@@ -37,8 +37,8 @@ export class TrendingComponent implements OnInit {
     });
   }
 
-  goToDetails(id: any, media: string, title: string) {
-    this.router.navigate([`details/${media}/${title}/${id}`], {
+  goToDetails(id: any, media: string) {
+    this.router.navigate([`details/${media}/${id}`], {
       queryParams: {
         itemId: id,
         mediaType: media,

@@ -24,13 +24,14 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 4px;
-  height: 4px;
+  width: 6px;
+  height: 6px;
   border-radius: 12px;
+  background: #e2e2e2;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: $primary;
+  background: #b1c2d1;
   border-radius: 12px;
 }
 

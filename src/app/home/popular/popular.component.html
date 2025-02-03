@@ -1,10 +1,31 @@
 <section>
   <div class="top">
     <h3>What's Popular</h3>
+    <div class="switcher">
+      <div
+        class="switch-bg"
+        [ngClass]="{ 'move-right': selected === 'Tv Shows' }"
+      ></div>
+
+      <div
+        class="switch-option"
+        [class.active]="selected === 'Movies'"
+        (click)="toggleSelection('Movies')"
+      >
+        Movies
+      </div>
+      <div
+        class="switch-option"
+        [class.active]="selected === 'Tv Shows'"
+        (click)="toggleSelection('Tv Shows')"
+      >
+        Tv Shows
+      </div>
+    </div>
   </div>
   <div class="movies">
     @for (item of popular; track $index) {
-    <div class="movieCard">
+    <div class="movieCard" (click)="goToDetails(item.id)">
       <div class="image">
         <img
           [src]="
@@ -78,8 +99,12 @@
         </div>
       </div>
       <div class="text">
-        <h5>{{ item.title }}</h5>
-        <span>{{ item.release_date | date : "MMM d, yyyy" }}</span>
+        <h5>{{ item.title ? item.title : item.original_name }}</h5>
+        <span>{{
+          item.release_date
+            ? (item.release_date | date : "MMM d, yyyy")
+            : (item.first_air_date | date : "MMM d, yyyy")
+        }}</span>
       </div>
     </div>
     }

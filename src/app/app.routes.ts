@@ -6,7 +6,7 @@ import { DetailsComponent } from './details/details.component';
 export const routes: Routes = [
   { path: '', component: HomeComponent, title: 'DarkMovies - Home' },
   {
-    path: 'details/:media/:title/:id',
+    path: 'details/:media/:id',
     component: DetailsComponent,
     title: 'DarkMovies - Details',
   },

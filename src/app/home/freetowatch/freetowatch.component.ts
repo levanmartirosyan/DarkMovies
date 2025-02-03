@@ -53,11 +53,11 @@ export class FreetowatchComponent implements OnInit {
     });
   }
 
-  goToDetails(id: any, media: string, title: string) {
-    this.router.navigate([`details/${media}/${title}/${id}`], {
+  goToDetails(id: any) {
+    this.router.navigate([`details/${this.selected}/${id}`], {
       queryParams: {
         itemId: id,
-        mediaType: media,
+        mediaType: this.selected,
       },
     });
   }

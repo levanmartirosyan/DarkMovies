@@ -154,11 +154,17 @@ section {
         height: 30px;
         margin-top: 15px;
         padding: 12px;
+        transition: 0.3s ease;
         span {
           font-weight: lighter;
           font-size: 14px;
           margin-top: 8px;
           color: #7f8a94;
+        }
+      }
+      &:hover {
+        .text {
+          transform: scale(1.08);
         }
       }
     }

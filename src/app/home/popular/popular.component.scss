@@ -12,6 +12,52 @@ section {
   align-items: flex-start;
   .top {
     width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    .switcher {
+      display: flex;
+      align-items: center;
+      position: relative;
+      border: 1px solid $primary;
+      border-radius: 25px;
+      overflow: hidden;
+      width: 180px;
+      height: 30px;
+      background: #fff;
+      cursor: pointer;
+      position: relative;
+      .switch-bg {
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        background: $primary;
+        border-radius: 25px;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .move-right {
+        transform: translateX(100%);
+      }
+
+      .switch-option {
+        flex: 1;
+        text-align: center;
+        padding: 8px 0;
+        font-size: 14px;
+        font-weight: 600;
+        color: $primary;
+        transition: color 0.5s ease-in-out, background 0.5s ease-in-out;
+        position: relative;
+        z-index: 2;
+
+        &.active {
+          background: linear-gradient(90deg, #a2efc5, #6bdba4);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
+      }
+    }
   }
   .movies {
     width: 100%;
@@ -105,11 +151,17 @@ section {
         height: 30px;
         margin-top: 15px;
         padding: 12px;
+        transition: 0.3s ease;
         span {
           font-weight: lighter;
           font-size: 14px;
           margin-top: 8px;
           color: #7f8a94;
+        }
+      }
+      &:hover {
+        .text {
+          transform: scale(1.08);
         }
       }
     }

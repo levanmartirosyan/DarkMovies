@@ -6,7 +6,7 @@
     "
     alt="Movie Poster"
   />
-  <p>{{ details.origin_country[0] }}</p>
-  <p>{{ details.title }}</p>
+  <p>{{ details.origin_country }}</p>
+  <p>{{ details.title ? details.title : details.original_name }}</p>
   <p>{{ details.overview }}</p>
 </div>
