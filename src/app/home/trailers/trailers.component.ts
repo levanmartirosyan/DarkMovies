@@ -52,7 +52,7 @@ export class TrailersComponent implements OnInit {
     }
     this.url = '';
     this.trandingIds = [];
-    this.apiService.trailers(id).subscribe({
+    this.apiService.movieTrailers(id).subscribe({
       next: (data: any) => {
         this.trailers = data.results;
         console.log(this.trailers);

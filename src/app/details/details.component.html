@@ -1,12 +1,220 @@
-<div>
-  <img
-    [src]="
-      'https://media.themoviedb.org/t/p/w220_and_h330_face' +
-      details.poster_path
-    "
-    alt="Movie Poster"
-  />
-  <p>{{ details.origin_country }}</p>
-  <p>{{ details.title ? details.title : details.original_name }}</p>
-  <p>{{ details.overview }}</p>
+<section
+  [style.background-image]="
+    'url(https://media.themoviedb.org/t/p/w1920_and_h1080_bestv2' +
+    details.backdrop_path +
+    ')'
+  "
+>
+  <div class="params">
+    <span
+      >Overview
+      <i class="fa-solid fa-sort-down"></i>
+      <div class="hoverMenuMovie">
+        <span>Popular</span>
+        <span>Now Playing</span>
+        <span>Upcomming</span>
+        <span>Top Rated</span>
+      </div>
+    </span>
+    <span
+      >Media
+      <i class="fa-solid fa-sort-down"></i>
+      <div class="hoverMenuTv">
+        <span>Popular</span>
+        <span>Airing Today</span>
+        <span>On TV</span>
+        <span>Top Rated</span>
+      </div>
+    </span>
+    <span
+      >Fandom
+      <i class="fa-solid fa-sort-down"></i>
+      <div class="hoverMenuPeople">
+        <span>Popular People</span>
+      </div>
+    </span>
+    <span
+      >Share
+      <i class="fa-solid fa-sort-down"></i>
+      <div class="hoverMenuMore">
+        <span>Discussions</span>
+        <span>Leaderboard</span>
+        <span>Support</span>
+        <span>Api</span>
+      </div>
+    </span>
+  </div>
+  <div class="content">
+    <div class="poster">
+      <img
+        [src]="
+          'https://media.themoviedb.org/t/p/w300_and_h450_bestv2' +
+          details.poster_path
+        "
+        alt="Movie Poster"
+      />
+    </div>
+    <div class="info">
+      <div class="title">
+        <h1>
+          {{ details.title ? details.title : details.original_name }}
+          <span
+            >({{
+              details.release_date
+                ? (details.release_date | date : "yyyy")
+                : (details.last_air_date | date : "yyyy")
+            }})</span
+          >
+        </h1>
+      </div>
+      <div class="addInfo">
+        <div class="date">
+          <span>{{
+            details.release_date
+              ? (details.release_date | date : "MM/dd/yyyy")
+              : (details.last_air_date | date : "MM/dd/yyyy")
+          }}</span>
+          <span>({{ details.origin_country }})</span>
+        </div>
+        <div class="genres">
+          <span>•</span>
+          @for (item of details.genres; track $index) {
+          <span>{{ item.name }}</span
+          >@if ($index < details.genres.length - 1) {
+          <p>,</p>
+          } }
+        </div>
+        <div class="duration">
+          <span>•</span>
+          <span>
+            @if (details.runtime) {
+            {{ hours }}h {{ minutes }}m ({{
+              details.status ? details.status : ""
+            }})} @else {
+
+            {{ details.seasons?.length }} Seasons ({{
+              details.status ? details.status : ""
+            }}) }
+          </span>
+        </div>
+      </div>
+      <div class="rate">
+        <!-- <div class="rating">
+          <div
+            class="progressBar"
+            [style.border]="
+              details.vote_average < 4
+                ? '2px solid #571f1f'
+                : details.vote_average < 7
+                ? '2px solid #423D0F'
+                : '2px solid #204529'
+            "
+          >
+            <div class="percent">
+              <p>{{ details.vote_average * 10 | number : "1.0-0" }}</p>
+              <span>%</span>
+            </div>
+          </div>
+          <div
+            class="progress"
+            [ngStyle]="{
+              'stroke-dasharray': 'calc(3.1416 * 2 * 15)',
+              'stroke-dashoffset':
+                'calc(3.1416 * 2 * 15 * (1 - (item.vote_average * 10 / 100)))',
+              'border-color':
+                details.vote_average < 4
+                  ? '#e70000'
+                  : details.vote_average < 7
+                  ? '#C8CA2F'
+                  : '#21CF79'
+            }"
+          >
+            <svg viewBox="0 0 36 36" class="circular-chart">
+              <path
+                class="circle-bg"
+                fill="none"
+                stroke="#e6e6e6"
+                stroke-width="3"
+                d="M18 2.0845
+                      a 15.9155 15.9155 0 1 0 1 31.831
+                      a 15.9155 15.9155 0 1 0 0 -31.831"
+              />
+              <path
+                class="circle"
+                fill="none"
+                [ngStyle]="{
+                  stroke:
+                    details.vote_average < 4
+                      ? '#e70000'
+                      : details.vote_average < 7
+                      ? '#C8CA2F'
+                      : '#21CF79'
+                }"
+                stroke-width="3"
+                [style.stroke-dasharray]="'calc(3.1416 * 2 * 15)'"
+                [style.stroke-dashoffset]="
+                  3.1416 * 2 * 15 * (1 - (details.vote_average * 10) / 100)
+                "
+                d="M18 2.0845
+                      a 15.9155 15.9155 0 1 0 0 31.831
+                      a 15.9155 15.9155 0 1 0 0 -31.831"
+              />
+            </svg>
+          </div>
+        </div> -->
+        <div class="test"><span>User Score</span></div>
+      </div>
+      <div class="favorites">
+        <div class="fav">
+          <div><i class="fa-solid fa-list-ul"></i></div>
+          <div><i class="fa-solid fa-heart"></i></div>
+          <div><i class="fa-solid fa-bookmark"></i></div>
+        </div>
+        <div class="playTrailer" (click)="toggleModal()">
+          <i class="fa-solid fa-play"></i>
+          <span>Play Trailer</span>
+        </div>
+      </div>
+      <div class="quote">
+        <span
+          ><em>{{ details.tagline }}</em></span
+        >
+      </div>
+      <div class="overview">
+        <h2>Overview</h2>
+        <p>{{ details.overview }}</p>
+      </div>
+      <div class="crew">
+        @for (item of groupedCrew; track $index) { @if (crewType=='tv' &&
+        item.jobs.includes('Director') || item.jobs.includes('Screenplay') ||
+        item.jobs.includes('Story') || item.jobs.includes('Characters') ||
+        item.jobs.includes('Producer')) {
+        <div>
+          <span>{{ item.name }}</span>
+          <span>{{ item.jobs.join(", ") }}</span>
+        </div>
+        } @else if (crewType=='tv' && item.jobs.includes('Executive Producer')
+        || item.jobs.includes('Director') || item.jobs.includes('Screenplay') ||
+        item.jobs.includes('Story') || item.jobs.includes('Characters') ||
+        item.jobs.includes('Creator') || item.jobs.includes('Producer') ) {
+        <div>
+          <span>{{ item.name }}</span>
+          <span>{{ item.jobs.join(", ") }}</span>
+        </div>
+        } }
+      </div>
+    </div>
+  </div>
+
+  <div class="overlay"></div>
+</section>
+@if (modal) {
+<div class="modal">
+  <div>
+    <h2>Trailer</h2>
+    <i class="fa-solid fa-x" (click)="toggleModal()"></i>
+  </div>
+  <iframe [src]="url" frameborder="0" width="100%" height="90%"></iframe>
 </div>
+<div class="overlay2" (click)="toggleModal()"></div>
+}

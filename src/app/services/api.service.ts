@@ -93,8 +93,17 @@ export class ApiService {
     );
   }
 
-  trailers(id: string) {
+  movieTrailers(id: string) {
     return this.http.get(`https://api.themoviedb.org/3/movie/${id}/videos`, {
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${this.token}`,
+      },
+    });
+  }
+
+  tvTrailers(id: string) {
+    return this.http.get(`https://api.themoviedb.org/3/tv/${id}/videos`, {
       headers: {
         accept: 'application/json',
         Authorization: `Bearer ${this.token}`,
@@ -124,5 +133,35 @@ export class ApiService {
         },
       }
     );
+  }
+
+  movieImages(id: string) {
+    return this.http.get(`https://api.themoviedb.org/3/movie/${id}/images`, {
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${this.token}`,
+      },
+    });
+  }
+
+  movieActors(id: string) {
+    return this.http.get(
+      `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US`,
+      {
+        headers: {
+          accept: 'application/json',
+          Authorization: `Bearer ${this.token}`,
+        },
+      }
+    );
+  }
+
+  tvActors(id: string) {
+    return this.http.get(`https://api.themoviedb.org/3/tv/${id}/credits`, {
+      headers: {
+        accept: 'application/json',
+        Authorization: `Bearer ${this.token}`,
+      },
+    });
   }
 }

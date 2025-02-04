@@ -1,0 +1,30 @@
+$primary: #032541;
+$white: #fff;
+
+footer {
+  width: 100%;
+  background-color: $primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 50px;
+  padding: 20px 0 7px 0;
+  .logo {
+    h1 {
+      font-size: 38px;
+      font-weight: bold;
+      background: linear-gradient(90deg, #90cea1, #00aeef);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      cursor: pointer;
+    }
+  }
+  .copy {
+    p {
+      color: $white;
+      font-size: 12px;
+    }
+  }
+}
